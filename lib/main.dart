@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
           backgroundColor: Colors.black,
-          body: Center(child: Focus(text: 'FOCUS'))),
+          body: Center(child: Focus(text: 'K-UBE'))),
     );
   }
 }
@@ -54,12 +54,12 @@ class _FocusState extends State<Focus> {
   final TextStyle textStyle = const TextStyle(
       fontSize: 180,
       color: Colors.white,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 40);
+      fontWeight: FontWeight.w600,
+      letterSpacing: 50);
   late final ImageFilter filter = ImageFilter.blur(sigmaX: 12, sigmaY: 6);
   @override
   void initState() {
-    _durationInMilliseconds = widget.durationInMilliseconds ?? 150;
+    _durationInMilliseconds = widget.durationInMilliseconds ?? 250;
     super.initState();
   }
 
@@ -74,7 +74,10 @@ class _FocusState extends State<Focus> {
                 children: [
                   AnimatedOpacity(
                     opacity: _selectedIndex == index ? 0 : 1,
-                    duration: Duration(milliseconds: _durationInMilliseconds),
+                    duration: Duration(
+                        milliseconds: _selectedIndex == index
+                            ? _durationInMilliseconds * 2
+                            : _durationInMilliseconds),
                     child: Text(
                       widget.text[index],
                       style: textStyle,
